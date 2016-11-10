@@ -64,12 +64,8 @@ describe('Lights', () => {
       expect(out).to.be.an('array');
     });
     it('should capture changing from green to yellow', () => {
-      let start = new Date()
-      let end = new Date();
-      start.setMinutes(4);
-      start.setMinutes(0);
-      end.setMinutes(4);
-      end.setSeconds(45);
+      let start = new Date(2016, 1, 1, 1, 4, 0)
+      let end = new Date(2016, 1, 1, 1, 4, 45);
 
       let out = lights.getChanges(start, end);
       expect(out.length).to.equal(1)
