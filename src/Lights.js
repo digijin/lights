@@ -16,7 +16,6 @@ export default class Lights{
     }else{
       return {ns:RED, ew:green}
     }
-
   }
   getChanges(start, end) {
 

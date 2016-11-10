@@ -63,5 +63,33 @@ describe('Lights', () => {
       let out = lights.getChanges(start, end);
       expect(out).to.be.an('array');
     });
+    it('should capture changing from green to yellow', () => {
+      let start = new Date()
+      let end = new Date();
+      start.setMinutes(4);
+      start.setMinutes(0);
+      end.setMinutes(4);
+      end.setSeconds(45);
+
+      let out = lights.getChanges(start, end);
+      expect(out.length).to.equal(1)
+      expect(out[0].light).to.equal('ew');
+      expect(out[0].from).to.equal('green');
+      expect(out[0].to).to.equal('yellow');
+    });
+    it('should capture yellow to red', () => {
+
+        let start = new Date()
+        let end = new Date();
+        start.setMinutes(4);
+        start.setSeconds(45);
+        end.setMinutes(6);
+        let out = lights.getChanges(start,end);
+        let ew = out[0];
+        if(ew.light!=='ew') ew = out[1];
+        expect(ew.from).to.equal('yellow')
+        expect(ew.to).to.equal('red')
+    });
+
   });
 });
