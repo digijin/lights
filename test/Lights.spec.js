@@ -91,5 +91,20 @@ describe('Lights', () => {
         expect(ew.to).to.equal('red')
     });
 
+    it('should capture red to green', () => {
+
+      let start = new Date()
+      let end = new Date();
+      start.setMinutes(9);
+      start.setSeconds(45);
+      end.setMinutes(12);
+      let out = lights.getChanges(start,end);
+      let ew = out[0];
+      if(ew.light!=='ew') ew = out[1];
+      expect(ew.from).to.equal('red')
+      expect(ew.to).to.equal('green')
+
+    })
+
   });
 });
