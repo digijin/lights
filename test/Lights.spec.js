@@ -106,5 +106,15 @@ describe('Lights', () => {
 
     })
 
+    it('should capture multiple phases', () => {
+      let start = new Date();
+      let end = new Date();
+      start.setMinutes(3);
+      end.setMinutes(8);
+      let out = lights.getChanges(start, end);
+      //should have a yellow light, a green light and a red light
+      expect(out.length).to.equal(3)
+    })
+
   });
 });
